@@ -36,7 +36,9 @@ labext_name = "jupytersd"
 
 data_files_spec = [
     ("share/jupyter/labextensions/%s" % labext_name, lab_path, "**"),
-    ("share/jupyter/labextensions/%s" % labext_name, HERE, "install.json"),
+    ("share/jupyter/labextensions/%s" % labext_name, HERE, "install.json"),("etc/jupyter/jupyter_server_config.d",
+     "jupyter-config", "jupytersd.json"),
+     
 ]
 
 cmdclass = create_cmdclass("jsdeps",
@@ -62,8 +64,8 @@ setup_args = dict(
     name=name,
     version=version,
     url="https://github.com/bpowers/jupytersd",
-    author="Bobby Powers",
-    description="System Dynamics diagram editing",
+    author="Bobby Powers <bobbypowers@gmail.com>",
+    description="System Dynamics visual editor",
     long_description= long_description,
     long_description_content_type="text/markdown",
     cmdclass= cmdclass,

@@ -29,5 +29,7 @@ jobs:
         jlpm run eslint:check
         python -m pip install .
 
+        jupyter serverextension list 2>&1 | grep -ie "jupytersd.*OK"
+
         jupyter labextension list 2>&1 | grep -ie "jupytersd.*OK"
         python -m jupyterlab.browser_check

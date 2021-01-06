@@ -2,8 +2,12 @@
 
 ![Github Actions Status](https://github.com/bpowers/jupytersd/workflows/Build/badge.svg)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bpowers/jupytersd/main?urlpath=lab)
 
-System Dynamics diagram editing
+System Dynamics visual editor
 
+
+This extension is composed of a Python package named `jupytersd`
+for the server extension and a NPM package named `jupytersd`
+for the frontend extension.
 
 
 ## Requirements
@@ -14,6 +18,23 @@ System Dynamics diagram editing
 
 ```bash
 pip install jupytersd
+```
+
+
+## Troubleshoot
+
+If you are seeing the frontend extension, but it is not working, check
+that the server extension is enabled:
+
+```bash
+jupyter server extension list
+```
+
+If the server extension is installed and enabled, but you are not seeing
+the frontend extension, check the frontend extension is installed:
+
+```bash
+jupyter labextension list
 ```
 
 
