@@ -3,6 +3,8 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 
+import { IJupyterWidgetRegistry } from '@jupyter-widgets/base';
+
 import { requestAPI } from './handler';
 
 /**
@@ -11,7 +13,8 @@ import { requestAPI } from './handler';
 const extension: JupyterFrontEndPlugin<void> = {
   id: 'jupytersd:plugin',
   autoStart: true,
-  activate: (app: JupyterFrontEnd) => {
+  activate: (app: JupyterFrontEnd, widgets: any) => {
+    debugger;
     console.log('JupyterLab extension jupytersd is activated!');
 
     requestAPI<any>('get_example')
