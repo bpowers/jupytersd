@@ -36,8 +36,21 @@ def load_jupyter_server_extension(server_app):
     server_app.log.info("Registered HelloWorld extension at URL path /jupytersd")
 
 
+class ProjectWidget(object):
+    def __init__(self, file_path: str):
+        self.file_path = file_path
+        with open(file_path, 'r') as f:
+            self.contents = f.read()
+
+    def _repr_mimebundle_(self, **kwargs):
+        data['application/vnd.simlin.widget-view+json'] = {
+            'version_major': 1,
+            'version_minor': 0,
+            'project_id': self.file_path,
+            'project_source': self.contents,
+        }
+        return data
+
+
 def open_file(file_path: str):
-    with open(file_path, 'rb') as file:
-        contents = file.read()
-
-
+    return ProjectWidget(file_path)

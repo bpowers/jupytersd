@@ -46,7 +46,11 @@
     "@jupyterlab/application": "^3.0.0",
     "@jupyterlab/coreutils": "^5.0.0",
     "@jupyterlab/notebook": "^3.0.4",
-    "@jupyterlab/services": "^6.0.0"
+    "@jupyterlab/services": "^6.0.0",
+    "@system-dynamics/core": "^1.1.6",
+    "@system-dynamics/diagram": "^1.1.5",
+    "@system-dynamics/importer": "^1.1.4",
+    "@system-dynamics/xmutil": "^1.1.1"
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.0.0",

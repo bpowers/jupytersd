@@ -11,12 +11,7 @@ import { WidgetRenderer } from './WidgetRenderer';
 /**
  * The mime type for a widget view.
  */
-export const WIDGET_VIEW_MIMETYPE = 'application/vnd.simlin-view+json';
-
-/**
- * The mime type for widget state data.
- */
-export const WIDGET_STATE_MIMETYPE = 'application/vnd.simlin-state+json';
+export const WIDGET_VIEW_MIMETYPE = 'application/vnd.simlin.widget-view+json';
 
 /**
  * Initialization data for the jupytersd extension.
@@ -25,9 +20,6 @@ const extension: JupyterFrontEndPlugin<void> = {
   id: 'jupytersd:plugin',
   autoStart: true,
   activate: (app: JupyterFrontEnd, rendermime: IRenderMimeRegistry) => {
-    debugger;
-    console.log('JupyterLab extension jupytersd is activated!');
-
     requestAPI<any>('get_example')
       .then(data => {
         console.log(data);
