@@ -3,9 +3,20 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 
-import { IJupyterWidgetRegistry } from '@jupyter-widgets/base';
+import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
 
 import { requestAPI } from './handler';
+import { WidgetRenderer } from './WidgetRenderer';
+
+/**
+ * The mime type for a widget view.
+ */
+export const WIDGET_VIEW_MIMETYPE = 'application/vnd.simlin-view+json';
+
+/**
+ * The mime type for widget state data.
+ */
+export const WIDGET_STATE_MIMETYPE = 'application/vnd.simlin-state+json';
 
 /**
  * Initialization data for the jupytersd extension.
@@ -13,7 +24,7 @@ import { requestAPI } from './handler';
 const extension: JupyterFrontEndPlugin<void> = {
   id: 'jupytersd:plugin',
   autoStart: true,
-  activate: (app: JupyterFrontEnd, widgets: any) => {
+  activate: (app: JupyterFrontEnd, rendermime: IRenderMimeRegistry) => {
     debugger;
     console.log('JupyterLab extension jupytersd is activated!');
 
@@ -23,10 +34,20 @@ const extension: JupyterFrontEndPlugin<void> = {
       })
       .catch(reason => {
         console.error(
-          `The jupytersd server extension appears to be missing.\n${reason}`
+          `:ohno: jupytersd server extension appears to be missing.\n${reason}`
         );
       });
-  }
+
+    rendermime.addFactory(
+      {
+        safe: false,
+        mimeTypes: [WIDGET_VIEW_MIMETYPE],
+        createRenderer: options => new WidgetRenderer(options)
+      },
+      0
+    );
+  },
+  requires: [IRenderMimeRegistry],
 };
 
 export default extension;
