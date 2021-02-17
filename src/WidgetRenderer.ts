@@ -42,14 +42,20 @@ export class WidgetRenderer
     const [svg] = await renderSvgToString(project, 'main');
 
     // Let's be optimistic, and hope the widget state will come later.
-    console.log('woooomp');
     this.node.innerHTML = svg;
 
-    // If there is no model id, the view was removed, so hide the node.
-    if (source.model_id === '') {
-      this.hide();
-      return;
+    if (!mimeModel.data['image/svg+xml']) {
+      setTimeout(() => {
+        mimeModel.setData({
+          data: Object.assign({}, mimeModel.data, {
+            'image/svg+xml': svg,
+          }),
+          metadata: mimeModel.metadata,
+        });
+      });
     }
+
+    return Promise.resolve();
   }
 
   dispose(): void {
