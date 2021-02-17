@@ -13,7 +13,7 @@ import setuptools
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 # The name of the project
-name="simlin"
+name="jupyter-simlin"
 
 # Get our version
 with open(os.path.join(HERE, 'package.json')) as f:
@@ -32,7 +32,7 @@ package_data_spec = {
     ]
 }
 
-labext_name = "simlin"
+labext_name = "jupyter-simlin"
 
 data_files_spec = [
     ("share/jupyter/labextensions/%s" % labext_name, lab_path, "**"),

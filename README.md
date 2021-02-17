@@ -17,7 +17,7 @@ for the frontend extension.
 ## Install
 
 ```bash
-pip install simlin
+pip install jupyter-simlin
 ```
 
 
@@ -79,5 +79,5 @@ jupyter lab build --minimize=False
 ### Uninstall
 
 ```bash
-pip uninstall simlin
+pip uninstall jupyter-simlin
 ```

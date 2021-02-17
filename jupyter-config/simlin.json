@@ -1,7 +1,7 @@
 {
   "ServerApp": {
     "jpserver_extensions": {
-      "simlin": true
+      "jupyter-simlin": true
     }
   }
 }

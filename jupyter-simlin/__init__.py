@@ -20,7 +20,7 @@ def _jupyter_labextension_paths():
 
 def _jupyter_server_extension_paths():
     return [{
-        "module": "jupytersd"
+        "module": "jupyter-simlin"
     }]
 
 
@@ -33,7 +33,7 @@ def load_jupyter_server_extension(server_app):
         JupyterLab application instance
     """
     setup_handlers(server_app.web_app)
-    server_app.log.info("Registered HelloWorld extension at URL path /jupytersd")
+    server_app.log.info("Registered HelloWorld extension at URL path /juptyer-simlin")
 
 
 class ProjectWidget(object):

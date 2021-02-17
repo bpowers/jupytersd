@@ -14,10 +14,10 @@ import { WidgetRenderer } from './WidgetRenderer';
 export const WIDGET_VIEW_MIMETYPE = 'application/vnd.simlin.widget-view+json';
 
 /**
- * Initialization data for the jupytersd extension.
+ * Initialization data for the jupyter-simlin extension.
  */
 const extension: JupyterFrontEndPlugin<void> = {
-  id: 'jupytersd:plugin',
+  id: 'jupyter-simlin:plugin',
   autoStart: true,
   activate: (app: JupyterFrontEnd, rendermime: IRenderMimeRegistry) => {
     requestAPI<any>('get_example')
@@ -26,7 +26,7 @@ const extension: JupyterFrontEndPlugin<void> = {
       })
       .catch(reason => {
         console.error(
-          `:ohno: jupytersd server extension appears to be missing.\n${reason}`
+          `:ohno: jupyter-simlin server extension appears to be missing.\n${reason}`
         );
       });
 

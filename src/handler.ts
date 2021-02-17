@@ -14,7 +14,7 @@ export async function requestAPI<T>(endPoint = ''): Promise<T> {
   const settings = ServerConnection.makeSettings();
   const requestUrl = URLExt.join(
     settings.baseUrl,
-    'jupytersd', // API Namespace
+    'jupyter-simlin', // API Namespace
     endPoint,
   );
 
