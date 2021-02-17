@@ -39,7 +39,7 @@ def load_jupyter_server_extension(server_app):
 class ProjectWidget(object):
     def __init__(self, file_path: str):
         self.file_path = file_path
-        with open(file_path, 'r') as f:
+        with open(file_path, 'rb') as f:
             self.contents = f.read()
 
     def _repr_mimebundle_(self, **kwargs):

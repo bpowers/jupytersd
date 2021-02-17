@@ -1,5 +1,7 @@
-import { renderSvgToString } from '@system-dynamics/diagram';
 import { datamodel } from '@system-dynamics/core';
+import { renderSvgToString } from '@system-dynamics/diagram';
+import { fromXmile } from '@system-dynamics/importer';
+import { convertMdlToXmile } from '@system-dynamics/xmutil';
 
 import { IDisposable } from '@lumino/disposable';
 
@@ -7,7 +9,8 @@ import { Panel } from '@lumino/widgets';
 
 import { IRenderMime } from '@jupyterlab/rendermime-interfaces';
 
-export class WidgetRenderer extends Panel
+export class WidgetRenderer
+  extends Panel
   implements IRenderMime.IRenderer, IDisposable {
   constructor(options: IRenderMime.IRendererOptions) {
     super();
@@ -17,13 +20,25 @@ export class WidgetRenderer extends Panel
   async renderModel(mimeModel: IRenderMime.IMimeModel): Promise<void> {
     const source: any = mimeModel.data[this.mimeType];
 
-    const contents = source['project_source'];
-    const project = datamodel.Project.deserializeBase64(contents);
+    const projectId: string = source['project_id'];
+    let contents = source['project_source'];
+    let project: datamodel.Project;
+    if (projectId.endsWith('.mdl')) {
+      contents = await convertMdlToXmile(contents, false);
+      const pb = await fromXmile(contents);
+      project = datamodel.Project.deserializeBinary(pb);
+    } else if (projectId.endsWith('.stmx') || projectId.endsWith('.xmile')) {
+      const pb = await fromXmile(contents);
+      project = datamodel.Project.deserializeBinary(pb);
+    } else {
+      project = datamodel.Project.deserializeBase64(contents);
+    }
 
     const [svg] = await renderSvgToString(project, 'main');
 
     // Let's be optimistic, and hope the widget state will come later.
-    ((this.node as unknown) as any).textContent = svg;
+    console.log('woooomp');
+    this.node.innerHTML = svg;
 
     // If there is no model id, the view was removed, so hide the node.
     if (source.model_id === '') {
