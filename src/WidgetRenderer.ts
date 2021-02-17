@@ -7,16 +7,19 @@ import { fromBase64 } from 'js-base64';
 
 import { IDisposable } from '@lumino/disposable';
 
-import { Panel } from '@lumino/widgets';
+import { Widget } from '@lumino/widgets';
 
 import { IRenderMime } from '@jupyterlab/rendermime-interfaces';
 
+const CLASS_NAME = 'mimerenderer-simlin_jupyter_widget';
+
 export class WidgetRenderer
-  extends Panel
+  extends Widget
   implements IRenderMime.IRenderer, IDisposable {
   constructor(options: IRenderMime.IRendererOptions) {
     super();
     this.mimeType = options.mimeType;
+    this.addClass(CLASS_NAME);
   }
 
   async renderModel(mimeModel: IRenderMime.IMimeModel): Promise<void> {

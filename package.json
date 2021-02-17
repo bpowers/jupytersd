@@ -1,5 +1,5 @@
 {
-  "name": "@system-dynamics/jupyter-widget",
+  "name": "jupyter-simlin",
   "version": "0.1.0",
   "description": "System Dynamics visual editor for Jupyter notebooks",
   "keywords": [
