@@ -76,9 +76,9 @@ setup_args = dict(
     zip_safe=False,
     include_package_data=True,
     python_requires=">=3.6",
-    license="BSD-3-Clause",
+    license="Apache-2.0",
     platforms="Linux, Mac OS X, Windows",
-    keywords=["Jupyter", "JupyterLab", "JupyterLab3"],
+    keywords=["Jupyter", "JupyterLab", "JupyterLab3", "System Dynamics", "Simlin"],
     classifiers=[
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
@@ -86,6 +86,7 @@ setup_args = dict(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Framework :: Jupyter",
     ],
 )
