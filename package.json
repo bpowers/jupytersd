@@ -32,7 +32,7 @@
     "build:lib": "tsc",
     "clean": "jlpm run clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
-    "clean:labextension": "rimraf jupyter-simlin/labextension",
+    "clean:labextension": "rimraf jupyter_simlin/labextension",
     "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
@@ -83,6 +83,6 @@
       }
     },
     "extension": true,
-    "outputDir": "jupyter-simlin/labextension"
+    "outputDir": "jupyter_simlin/labextension"
   }
 }
