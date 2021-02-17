@@ -20,7 +20,7 @@ def _jupyter_labextension_paths():
 
 def _jupyter_server_extension_paths():
     return [{
-        "module": "jupyter-simlin"
+        "module": "jupyter_simlin"
     }]
 
 
