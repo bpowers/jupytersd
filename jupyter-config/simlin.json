@@ -1,7 +1,7 @@
 {
   "ServerApp": {
     "jpserver_extensions": {
-      "jupytersd": true
+      "simlin": true
     }
   }
 }

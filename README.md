@@ -1,12 +1,12 @@
-# jupytersd
+# simlin Jupyter widget
 
-![Github Actions Status](https://github.com/bpowers/jupytersd/workflows/Build/badge.svg)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bpowers/jupytersd/main?urlpath=lab)
+![Github Actions Status](https://github.com/bpowers/simlin/workflows/Build/badge.svg)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bpowers/simlin/main?urlpath=lab)
 
-System Dynamics visual editor
+Edit system dynamics models from Jupyter notebooks
 
 
-This extension is composed of a Python package named `jupytersd`
-for the server extension and a NPM package named `jupytersd`
+This extension is composed of a Python package named `simlin`
+for the server extension and a NPM package named `simlin`
 for the frontend extension.
 
 
@@ -17,7 +17,7 @@ for the frontend extension.
 ## Install
 
 ```bash
-pip install jupytersd
+pip install simlin
 ```
 
 
@@ -50,7 +50,7 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the jupytersd directory
+# Change directory to the simlin directory
 # Install package in development mode
 pip install -e .
 # Link your development version of the extension with JupyterLab
@@ -79,5 +79,5 @@ jupyter lab build --minimize=False
 ### Uninstall
 
 ```bash
-pip uninstall jupytersd
+pip uninstall simlin
 ```

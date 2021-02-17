@@ -1,13 +1,13 @@
 include LICENSE
 include README.md
 include pyproject.toml
-include jupyter-config/jupytersd.json
+include jupyter-config/simlin.json
 
 include package.json
 include install.json
 include ts*.json
 
-graft jupytersd/labextension
+graft simlin/labextension
 
 # Javascript files
 graft src

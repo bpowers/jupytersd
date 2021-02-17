@@ -1,5 +1,5 @@
 """
-jupytersd setup
+simlin setup
 """
 import json
 import os
@@ -13,7 +13,7 @@ import setuptools
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 # The name of the project
-name="jupytersd"
+name="simlin"
 
 # Get our version
 with open(os.path.join(HERE, 'package.json')) as f:
@@ -32,12 +32,12 @@ package_data_spec = {
     ]
 }
 
-labext_name = "jupytersd"
+labext_name = "simlin"
 
 data_files_spec = [
     ("share/jupyter/labextensions/%s" % labext_name, lab_path, "**"),
     ("share/jupyter/labextensions/%s" % labext_name, HERE, "install.json"),("etc/jupyter/jupyter_server_config.d",
-     "jupyter-config", "jupytersd.json"),
+     "jupyter-config", "simlin.json"),
      
 ]
 
@@ -63,9 +63,9 @@ with open("README.md", "r") as fh:
 setup_args = dict(
     name=name,
     version=version,
-    url="https://github.com/bpowers/jupytersd",
+    url="https://github.com/bpowers/simlin",
     author="Bobby Powers <bobbypowers@gmail.com>",
-    description="System Dynamics visual editor",
+    description="visual editor for system dynamics models",
     long_description= long_description,
     long_description_content_type="text/markdown",
     cmdclass= cmdclass,
