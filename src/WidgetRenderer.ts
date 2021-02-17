@@ -1,8 +1,5 @@
-import { convertMdlToXmile } from '@system-dynamics/xmutil';
-import { fromXmile } from '@system-dynamics/importer';
-
-import { Project } from '@system-dynamics/core/datamodel';
 import { renderSvgToString } from '@system-dynamics/diagram';
+import { datamodel } from '@system-dynamics/core';
 
 import { IDisposable } from '@lumino/disposable';
 
@@ -20,20 +17,13 @@ export class WidgetRenderer extends Panel
   async renderModel(mimeModel: IRenderMime.IMimeModel): Promise<void> {
     const source: any = mimeModel.data[this.mimeType];
 
-    let contents = source['project_source'];
+    const contents = source['project_source'];
+    const project = datamodel.Project.deserializeBase64(contents);
 
-    if (source['project_id'].endsWith('.mdl')) {
-      contents = await convertMdlToXmile(contents, false);
-    }
-
-    const pb = await fromXmile(contents);
-    const project = Project.deserializeBinary(pb);
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [svg, _viewBox] = await renderSvgToString(project, 'main');
+    const [svg] = await renderSvgToString(project, 'main');
 
     // Let's be optimistic, and hope the widget state will come later.
-    this.node.textContent = svg;
+    ((this.node as unknown) as any).textContent = svg;
 
     // If there is no model id, the view was removed, so hide the node.
     if (source.model_id === '') {

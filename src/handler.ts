@@ -9,21 +9,18 @@ import { ServerConnection } from '@jupyterlab/services';
  * @param init Initial values for the request
  * @returns The response body interpreted as JSON
  */
-export async function requestAPI<T>(
-  endPoint = '',
-  init: RequestInit = {}
-): Promise<T> {
+export async function requestAPI<T>(endPoint = ''): Promise<T> {
   // Make request to Jupyter API
   const settings = ServerConnection.makeSettings();
   const requestUrl = URLExt.join(
     settings.baseUrl,
     'jupytersd', // API Namespace
-    endPoint
+    endPoint,
   );
 
-  let response: Response;
+  let response: any;
   try {
-    response = await ServerConnection.makeRequest(requestUrl, init, settings);
+    response = await ServerConnection.makeRequest(requestUrl, {}, settings);
   } catch (error) {
     throw new ServerConnection.NetworkError(error);
   }
