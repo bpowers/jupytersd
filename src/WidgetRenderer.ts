@@ -3,6 +3,8 @@ import { renderSvgToString } from '@system-dynamics/diagram';
 import { fromXmile } from '@system-dynamics/importer';
 import { convertMdlToXmile } from '@system-dynamics/xmutil';
 
+import { fromBase64 } from 'js-base64';
+
 import { IDisposable } from '@lumino/disposable';
 
 import { Panel } from '@lumino/widgets';
@@ -24,11 +26,11 @@ export class WidgetRenderer
     let contents = source['project_source'];
     let project: datamodel.Project;
     if (projectId.endsWith('.mdl')) {
-      contents = await convertMdlToXmile(contents, false);
+      contents = await convertMdlToXmile(fromBase64(contents), false);
       const pb = await fromXmile(contents);
       project = datamodel.Project.deserializeBinary(pb);
     } else if (projectId.endsWith('.stmx') || projectId.endsWith('.xmile')) {
-      const pb = await fromXmile(contents);
+      const pb = await fromXmile(fromBase64(contents));
       project = datamodel.Project.deserializeBinary(pb);
     } else {
       project = datamodel.Project.deserializeBase64(contents);
